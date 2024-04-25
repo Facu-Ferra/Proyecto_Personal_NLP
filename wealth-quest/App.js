@@ -2,29 +2,18 @@ import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from
 import tabern from './assets/images/tabern.png';
 import btn from './assets/images/btn1_start.png';
 import AppLoading from 'expo-app-loading';
+import StartBtn from './src/components/StartBtn';
 import {
   useFonts,
   InknutAntiqua_300Light,
-  InknutAntiqua_400Regular,
-  InknutAntiqua_500Medium,
-  InknutAntiqua_600SemiBold,
-  InknutAntiqua_700Bold,
-  InknutAntiqua_800ExtraBold,
-  InknutAntiqua_900Black,
+  InknutAntiqua_600SemiBold
 } from '@expo-google-fonts/inknut-antiqua';
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     InknutAntiqua_300Light,
-    InknutAntiqua_400Regular,
-    InknutAntiqua_500Medium,
-    InknutAntiqua_600SemiBold,
-    InknutAntiqua_700Bold,
-    InknutAntiqua_800ExtraBold,
-    InknutAntiqua_900Black,
+    InknutAntiqua_600SemiBold
   });
-
-  let fontSize = 24;
-  let paddingVertical = 6;
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -33,19 +22,13 @@ export default function App() {
       <View style={styles.container}>
         <ImageBackground source={tabern} style={styles.backImage}>
           <Text style={styles.text}>¿Ready to keep growing?</Text>
-          <TouchableOpacity onPress={onPress}>
-            <ImageBackground source={btn} style={styles.button}>
-              <Text style={styles.buttonText}>Start</Text>
-            </ImageBackground>
-          </TouchableOpacity>
+          <StartBtn text="Start" />
         </ImageBackground>
       </View>
     );
   }
 }
 
-
-function onPress() { }
 
 const styles = StyleSheet.create({
   container: {
@@ -63,21 +46,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     textAlign: 'center',
     fontFamily: 'InknutAntiqua_300Light',
-  },
-  button: {
-    width: 320,
-    marginBottom: 75,
-    height: 60,
-    borderRadius: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center', // Centrar horizontalmente el botón
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18,
-    textAlign: 'center',
-    fontFamily: 'InknutAntiqua_600SemiBold',
   },
 });
 
