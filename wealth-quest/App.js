@@ -1,19 +1,21 @@
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import tabern from './assets/images/tabern.png';
+import btn from './assets/images/btn1_start.png';
 export default function App() {
   return (
     <View style={styles.container}>
        <ImageBackground source={tabern} style={styles.backImage}>
           <Text style={styles.text}>¿Ready to keep growing?</Text>
           <TouchableOpacity onPress={onPress}>
-              <View style={styles.button}>
+            <ImageBackground source={btn} style={styles.button}>
                 <Text style={styles.buttonText}>Start</Text>
-              </View>
+            </ImageBackground>
           </TouchableOpacity>
        </ImageBackground>
     </View>
   );
 }
+
 
 function onPress(){}
 
@@ -31,25 +33,23 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     marginBottom: 5,
-    fontWeight: 'bold',
     textAlign: 'center'
   },
   button: {
-    width: '70%',
-    maxWidth: 400,
-    marginBottom:85,
+    width: 320,
+    marginBottom:75,
     height: 60,
     borderRadius: 40,
-    backgroundColor: '#97111D',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center', // Centrar horizontalmente el botón
-    borderWidth: 2, // Grosor del borde
+    borderWidth: 1, // Grosor del borde
     borderColor: 'black', // Color del borde
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
     textAlign: 'center',
+    fontWeight: 'bold',
   }
 });
