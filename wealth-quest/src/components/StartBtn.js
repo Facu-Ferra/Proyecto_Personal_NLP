@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       alignSelf: 'center', // Centrar horizontalmente el botón
+      bottom: 10
     },
     buttonText: {
       color: 'white',
