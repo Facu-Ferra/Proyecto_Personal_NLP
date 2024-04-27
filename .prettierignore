@@ -1,0 +1,14 @@
+# Folders
+.expo/
+.husky/
+assets/
+node_modules/
+
+# Files
+.eslintrc.json
+.prettierrc
+app.json
+babel.config.js
+package-lock.json
+package.json
+README.md
