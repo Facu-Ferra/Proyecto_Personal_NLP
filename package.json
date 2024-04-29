@@ -1,0 +1,40 @@
+{
+  "name": "wealth-quest",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "prepare": "husky install",
+    "pre-commit": "eslint . --ext .js,.jsx,.ts,.tsx && prettier --check ."
+  },
+  "dependencies": {
+    "@expo-google-fonts/inknut-antiqua": "^0.2.3",
+    "expo": "~50.0.14",
+    "expo-app-loading": "^2.1.1",
+    "expo-font": "~11.10.3",
+    "expo-status-bar": "~1.11.1",
+    "react": "18.2.0",
+    "react-native": "0.73.6",
+    "react-native-linear-gradient": "^2.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-native": "^4.1.0",
+    "globals": "^15.0.0",
+    "husky": "^9.0.11",
+    "prettier": "3.2.5"
+  },
+  "private": true
+}
