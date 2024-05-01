@@ -1,1 +1,5 @@
 export const COLOR_WHITE = 'white'
+export const COLOR_PROFILE_BACKGROUND = 'rgba(39,33,31,0.75)'
+export const COLOR_GRAY_NEW_PROFILE = 'rgba(204,213,209,0.5)'
+export const COLOR_GRAY_NEW_PROFILE_TEXT = 'rgba(204,213,209,0.75)'
+export const COLOR_PALADIN_CLASS = '#65D1A3'
