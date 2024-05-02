@@ -7,30 +7,10 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native'
-// import {
-//   useFonts,
-//   InknutAntiqua_300Light,
-//   InknutAntiqua_400Regular,
-//   InknutAntiqua_500Medium,
-//   InknutAntiqua_600SemiBold,
-//   InknutAntiqua_700Bold,
-//   InknutAntiqua_800ExtraBold,
-//   InknutAntiqua_900Black
-// } from '@expo-google-fonts/inknut-antiqua'
 import btn from '../../assets/images/btn1_start.png'
 import { COLOR_WHITE } from '../commons/constants/colors'
 
 export default function StartBtn(props) {
-  // let [fontsLoaded] = useFonts({
-  //   InknutAntiqua_300Light,
-  //   InknutAntiqua_400Regular,
-  //   InknutAntiqua_500Medium,
-  //   InknutAntiqua_600SemiBold,
-  //   InknutAntiqua_700Bold,
-  //   InknutAntiqua_800ExtraBold,
-  //   InknutAntiqua_900Black
-  // })
-
   return (
     <TouchableOpacity onPress={onPress}>
       <ImageBackground source={btn} style={styles.button}>
