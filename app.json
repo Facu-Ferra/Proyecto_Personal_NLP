@@ -9,7 +9,11 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#42403D"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#42403D",
+      "translucent": false
     },
     "assetBundlePatterns": [
       "**/*"
@@ -23,11 +27,13 @@
         "backgroundColor": "#ffffff"
       }
     },
+    "scheme": "proyecto",
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      "expo-router"
     ]
   }
 }
