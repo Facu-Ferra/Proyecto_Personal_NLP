@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "wealth-quest",
+    "scheme": "wealth-quest",
+    "name": "weaslth-quest",
     "slug": "wealth-quest",
     "version": "1.0.0",
     "orientation": "portrait",

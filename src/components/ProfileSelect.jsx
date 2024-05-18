@@ -1,14 +1,8 @@
 /* TODO hacer no requeridas */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
-
 import { StyleSheet, Text, View, Image } from 'react-native'
 import newProfile from '../../assets/images/plus.png'
-import AppLoading from 'expo-app-loading'
-import {
-  useFonts,
-  InknutAntiqua_300Light
-} from '@expo-google-fonts/inknut-antiqua'
 import {
   COLOR_PROFILE_BACKGROUND,
   COLOR_WHITE,
@@ -18,14 +12,6 @@ import {
 } from '../../src/commons/constants/colors'
 
 export default function ProfileSelect(props) {
-  let [fontsLoaded] = useFonts({
-    InknutAntiqua_300Light
-  })
-
-  if (!fontsLoaded) {
-    return <AppLoading />
-  }
-
   if (props.text == null && props.photo == null) {
     return (
       <View style={styles.profile}>

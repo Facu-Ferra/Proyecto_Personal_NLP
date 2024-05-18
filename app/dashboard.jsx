@@ -33,24 +33,26 @@ export default function App() {
 
   const { profile_id } = useLocalSearchParams()
   console.log({ profile_id })
-
+  
   let profiles = [
     {
       text: 'Benoffi',
       photo: character1,
       class: 'Paladin',
       level: level1,
-      title: 'Young soldier'
+      title: 'Young soldier',
+      color: '#89d3d7'
     },
     {
       text: 'Chaldu',
       photo: character2,
       class: 'Necromancer',
       level: level10,
-      title: 'King of Ashes'
+      title: 'King of Ashes',
+      color: '#9F4CD4'
     }
   ]
-
+  
   if (!fontsLoaded) {
     return <AppLoading />
   } else {
@@ -61,14 +63,14 @@ export default function App() {
           <View style={styles.content}>
             <View style={styles.character}>
               <View style={styles.character_text}>
-                <Text style={styles.character_name}>
+                <Text style={[styles.character_name, {textShadowColor: profiles[profile_id].color}]}>
                   {profiles[profile_id].text}
                 </Text>
                 <View style={styles.stats_container}>
-                  <Text style={styles.stats}>
+                  <Text style={[styles.stats, {textShadowColor: profiles[profile_id].color} ]}>
                     Class: {profiles[profile_id].class}
                   </Text>
-                  <Text style={styles.stats}>
+                  <Text style={[styles.stats, {textShadowColor: profiles[profile_id].color}]}>
                     Title: {profiles[profile_id].title}
                   </Text>
                 </View>

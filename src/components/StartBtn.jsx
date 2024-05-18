@@ -6,6 +6,7 @@ import btn from '../../assets/images/btn1_start.png'
 import { COLOR_WHITE } from '../commons/constants/colors'
 
 export default function StartBtn(props) {
+
   return (
     <ImageBackground source={btn} style={styles.button}>
       <Text style={styles.buttonText}>{props.text}</Text>
