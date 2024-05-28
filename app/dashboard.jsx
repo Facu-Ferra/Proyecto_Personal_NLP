@@ -21,7 +21,10 @@ import {
 import {
   COLOR_GRAY_DASHBOARD,
   COLOR_WHITE,
-  COLOR_PALADIN
+  COLOR_PALADIN,
+  COLOR_BROWN_DASHBOARD,
+  COLOR_BLACK_GOAL_BACKGORUND,
+  COLOR_RED
 } from '../src/commons/constants/colors'
 import { useLocalSearchParams } from 'expo-router'
 
@@ -33,14 +36,14 @@ export default function App() {
 
   const { profile_id } = useLocalSearchParams()
   console.log({ profile_id })
-  
+
   let profiles = [
     {
       text: 'Benoffi',
       photo: character1,
       class: 'Paladin',
       level: level1,
-      title: 'Young soldier',
+      title: 'Apprentice',
       color: '#89d3d7'
     },
     {
@@ -52,7 +55,7 @@ export default function App() {
       color: '#9F4CD4'
     }
   ]
-  
+
   if (!fontsLoaded) {
     return <AppLoading />
   } else {
@@ -63,21 +66,30 @@ export default function App() {
           <View style={styles.content}>
             <View style={styles.character}>
               <View style={styles.character_text}>
-                <Text style={[styles.character_name, {textShadowColor: profiles[profile_id].color}]}>
+                <Text
+                  style={[
+                    styles.character_name,
+                    { textShadowColor: profiles[profile_id].color }
+                  ]}>
                   {profiles[profile_id].text}
                 </Text>
-                <View style={styles.stats_container}>
-                  <Text style={[styles.stats, {textShadowColor: profiles[profile_id].color} ]}>
-                    Class: {profiles[profile_id].class}
-                  </Text>
-                  <Text style={[styles.stats, {textShadowColor: profiles[profile_id].color}]}>
-                    Title: {profiles[profile_id].title}
-                  </Text>
-                </View>
+                <Text style={styles.stats}>
+                  Class: {profiles[profile_id].class}
+                </Text>
+                <Text style={[styles.stats, { top: '60%' }]}>
+                  Title: {profiles[profile_id].title}
+                </Text>
               </View>
               <Image
                 source={profiles[profile_id].photo}
                 style={styles.profileImage}></Image>
+            </View>
+            <View style={styles.main_stats_container}>
+              <Text style={styles.main_stats_title}>Main Attributes</Text>
+            </View>
+            <View style={styles.goal_container}>
+              <Text style={styles.goal_title}>Next Goal:</Text>
+              <Text style={styles.goal_info}>405.000/700.000</Text>
             </View>
           </View>
           <Image
@@ -119,45 +131,74 @@ const styles = StyleSheet.create({
   profileImage: {
     width: '38%',
     height: '80%',
-    alignSelf: 'center',
-    marginRight: 35,
-    borderRadius: 40
+    alignSelf: 'baseline',
+    right: 15,
+    top: 15,
+    borderRadius: 40,
+    position: 'absolute'
   },
   character: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 'auto',
+    width: '100%',
     height: '40%'
   },
   character_text: {
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
     height: '80%',
-    marginLeft: 25
+    width: '100%',
+    top: 0,
+    marginLeft: 10,
+    marginTop: 25
   },
   character_name: {
     color: COLOR_WHITE,
     fontFamily: 'InknutAntiqua_300Light',
     fontSize: 30,
-    marginTop: '50%',
-    marginLeft: '5%',
     position: 'relative',
     textShadowColor: COLOR_PALADIN, // Glow color
-    textShadowOffset: { width: -1, height: 1 }, // Shadow offset
+    textShadowOffset: { width: 0, height: 1 }, // Shadow offset
     textShadowRadius: 12
-  },
-  stats_container: {
-    justifyContent: 'flex-end'
   },
   stats: {
     color: COLOR_WHITE,
     fontFamily: 'InknutAntiqua_300Light',
     fontSize: 16,
-    marginLeft: '5%',
-    position: 'relative',
-    textShadowColor: COLOR_PALADIN, // Glow color
-    textShadowOffset: { width: -1, height: 1 }, // Shadow offset
-    textShadowRadius: 12
+    position: 'absolute',
+    top: '40%'
+  },
+  main_stats_container: {
+    alignSelf: 'center',
+    width: '90%',
+    height: '38%',
+    backgroundColor: COLOR_BROWN_DASHBOARD,
+    borderRadius: 40,
+    position: 'relative'
+  },
+  main_stats_title: {
+    color: COLOR_WHITE,
+    fontFamily: 'InknutAntiqua_300Light',
+    alignSelf: 'center',
+    fontSize: 25
+  },
+  goal_container: {
+    alignSelf: 'center',
+    width: '90%',
+    marginTop: '10%',
+    height: '10%',
+    backgroundColor: COLOR_BLACK_GOAL_BACKGORUND,
+    borderRadius: 40,
+    flexDirection: 'row'
+  },
+  goal_title: {
+    color: COLOR_RED,
+    fontFamily: 'InknutAntiqua_300Light',
+    marginLeft: '7%',
+    fontSize: 20
+  },
+  goal_info: {
+    color: COLOR_WHITE,
+    fontFamily: 'InknutAntiqua_300Light',
+    marginTop: 4,
+    marginLeft: 4,
+    fontSize: 15
   }
 })

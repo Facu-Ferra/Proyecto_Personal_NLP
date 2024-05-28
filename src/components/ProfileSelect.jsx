@@ -8,7 +8,8 @@ import {
   COLOR_WHITE,
   COLOR_GRAY_NEW_PROFILE,
   COLOR_GRAY_NEW_PROFILE_TEXT,
-  COLOR_PALADIN_CLASS
+  COLOR_PALADIN_CLASS,
+  COLOR_BORDER_SELECTED
 } from '../../src/commons/constants/colors'
 
 export default function ProfileSelect(props) {
@@ -103,6 +104,6 @@ const styles = StyleSheet.create({
   },
   selectedCard: {
     borderWidth: 2,
-    borderColor: COLOR_WHITE
+    borderColor: COLOR_BORDER_SELECTED
   }
 })
