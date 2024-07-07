@@ -5,9 +5,9 @@ import {
   Text,
   Image,
   View,
-  StatusBar,
   TouchableOpacity
 } from 'react-native'
+import { StatusBar } from 'expo-status-bar';
 import tabern from '../assets/images/tabern.png'
 import AppLoading from 'expo-app-loading'
 import StartBtn from '../src/components/StartBtn'
@@ -44,7 +44,7 @@ export default function App() {
   } else {
     return (
       <View style={styles.container}>
-        <StatusBar style='dark'></StatusBar>
+        <StatusBar style='light'></StatusBar>
         <ImageBackground source={tabern} style={styles.backImage}>
           <View style={styles.profilesContainer}>
             <Image source={title} style={styles.title}></Image>

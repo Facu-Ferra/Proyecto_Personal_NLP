@@ -4,15 +4,20 @@ import {
   StyleSheet,
   Text,
   Image,
-  View,
-  StatusBar
+  View
 } from 'react-native'
+import { StatusBar } from 'expo-status-bar';
+import Stat from '../src/components/Stat.jsx'
 import tabern from '../assets/images/tabern.png'
 import level1 from '../assets/images/level-icon/1.png'
 import level10 from '../assets/images/level-icon/10.png'
 import AppLoading from 'expo-app-loading'
 import character1 from '../assets/characters/paladin.jpg'
 import character2 from '../assets/characters/necromancer.jpg'
+import lifeIcon from '../assets/images/stats-icon/life.png'
+import divineIcon from '../assets/images/stats-icon/divine.png'
+import manaIcon from '../assets/images/stats-icon/mana.png'
+import fireIcon from '../assets/images/stats-icon/fire.png'
 import {
   useFonts,
   InknutAntiqua_300Light,
@@ -61,7 +66,7 @@ export default function App() {
   } else {
     return (
       <View style={styles.container}>
-        <StatusBar style='dark'></StatusBar>
+          <StatusBar style='light'></StatusBar>
         <ImageBackground source={tabern} style={styles.backImage}>
           <View style={styles.content}>
             <View style={styles.character}>
@@ -86,10 +91,18 @@ export default function App() {
             </View>
             <View style={styles.main_stats_container}>
               <Text style={styles.main_stats_title}>Main Attributes</Text>
+              <View style={styles.row}>
+                <Stat image={lifeIcon} stat='USD' amount='500.000'></Stat>
+                <Stat image={divineIcon} stat='ARS' amount='200.000'></Stat>
+              </View>
+              <View style={styles.row}>
+                <Stat image={manaIcon} stat='BTC' amount='150.000'></Stat>
+                <Stat image={fireIcon} stat='QQQ' amount='100.000'></Stat>
+              </View>
             </View>
             <View style={styles.goal_container}>
               <Text style={styles.goal_title}>Next Goal:</Text>
-              <Text style={styles.goal_info}>405.000/700.000</Text>
+              <Text style={styles.goal_info}>950.000/980.000</Text>
             </View>
           </View>
           <Image
@@ -200,5 +213,12 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginLeft: 4,
     fontSize: 15
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginBottom: 12,
+    marginLeft: 20,
   }
 })
