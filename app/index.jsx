@@ -7,13 +7,12 @@ import {
   View,
   TouchableOpacity
 } from 'react-native'
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar'
 import tabern from '../assets/images/tabern.png'
 import AppLoading from 'expo-app-loading'
 import StartBtn from '../src/components/StartBtn'
 import ProfileSelect from '../src/components/ProfileSelect'
-import character1 from '../assets/characters/paladin.jpg'
-import character2 from '../assets/characters/necromancer.jpg'
+import { PROFILES } from '../src/commons/constants/helper.js'
 import title from '../assets/images/title.png'
 import {
   useFonts,
@@ -30,10 +29,10 @@ export default function App() {
   })
 
   const [selectedCard, setSelectedCard] = useState(0)
-  let profiles = [
+  /*let profiles = [
     { text: 'Benoffi', photo: character1, class: 'Paladin' },
     { text: 'Chaldu', photo: character2, class: 'Necromancer' }
-  ]
+  ]*/
 
   const selectCard = (index) => {
     setSelectedCard(index)
@@ -49,7 +48,7 @@ export default function App() {
           <View style={styles.profilesContainer}>
             <Image source={title} style={styles.title}></Image>
 
-            {profiles.map((elemento, index) => (
+            {PROFILES.map((elemento, index) => (
               <TouchableOpacity onPress={() => selectCard(index)} key={index}>
                 <ProfileSelect
                   text={elemento.text}
@@ -59,7 +58,7 @@ export default function App() {
               </TouchableOpacity>
             ))}
 
-            {profiles.length < 3 && (
+            {PROFILES.length < 3 && (
               <TouchableOpacity onPress={() => newProfile()}>
                 <ProfileSelect></ProfileSelect>
               </TouchableOpacity>

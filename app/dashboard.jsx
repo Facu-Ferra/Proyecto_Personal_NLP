@@ -1,23 +1,12 @@
 import React from 'react'
-import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  Image,
-  View
-} from 'react-native'
-import { StatusBar } from 'expo-status-bar';
+import { ImageBackground, StyleSheet, Text, Image, View } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 import Stat from '../src/components/Stat.jsx'
+import NavBar from '../src/components/NavBar.jsx'
 import tabern from '../assets/images/tabern.png'
-import level1 from '../assets/images/level-icon/1.png'
-import level10 from '../assets/images/level-icon/10.png'
 import AppLoading from 'expo-app-loading'
-import character1 from '../assets/characters/paladin.jpg'
-import character2 from '../assets/characters/necromancer.jpg'
-import lifeIcon from '../assets/images/stats-icon/life.png'
-import divineIcon from '../assets/images/stats-icon/divine.png'
-import manaIcon from '../assets/images/stats-icon/mana.png'
-import fireIcon from '../assets/images/stats-icon/fire.png'
+import { PROFILES } from '../src/commons/constants/helper.js'
+
 import {
   useFonts,
   InknutAntiqua_300Light,
@@ -40,33 +29,17 @@ export default function App() {
   })
 
   const { profile_id } = useLocalSearchParams()
-  console.log({ profile_id })
 
-  let profiles = [
-    {
-      text: 'Benoffi',
-      photo: character1,
-      class: 'Paladin',
-      level: level1,
-      title: 'Apprentice',
-      color: '#89d3d7'
-    },
-    {
-      text: 'Chaldu',
-      photo: character2,
-      class: 'Necromancer',
-      level: level10,
-      title: 'King of Ashes',
-      color: '#9F4CD4'
-    }
-  ]
+  const totalAmount = PROFILES[profile_id].stats.reduce((accumulator, stat) => {
+    return accumulator + stat.amount
+  }, 0)
 
   if (!fontsLoaded) {
     return <AppLoading />
   } else {
     return (
       <View style={styles.container}>
-          <StatusBar style='light'></StatusBar>
+        <StatusBar style='light'></StatusBar>
         <ImageBackground source={tabern} style={styles.backImage}>
           <View style={styles.content}>
             <View style={styles.character}>
@@ -74,40 +47,57 @@ export default function App() {
                 <Text
                   style={[
                     styles.character_name,
-                    { textShadowColor: profiles[profile_id].color }
+                    { textShadowColor: PROFILES[profile_id].color }
                   ]}>
-                  {profiles[profile_id].text}
+                  {PROFILES[profile_id].text}
                 </Text>
                 <Text style={styles.stats}>
-                  Class: {profiles[profile_id].class}
+                  Class: {PROFILES[profile_id].class}
                 </Text>
                 <Text style={[styles.stats, { top: '60%' }]}>
-                  Title: {profiles[profile_id].title}
+                  Title: {PROFILES[profile_id].title}
                 </Text>
               </View>
               <Image
-                source={profiles[profile_id].photo}
+                source={PROFILES[profile_id].photo}
                 style={styles.profileImage}></Image>
             </View>
             <View style={styles.main_stats_container}>
               <Text style={styles.main_stats_title}>Main Attributes</Text>
               <View style={styles.row}>
-                <Stat image={lifeIcon} stat='USD' amount='500.000'></Stat>
-                <Stat image={divineIcon} stat='ARS' amount='200.000'></Stat>
+                <Stat
+                  image={PROFILES[profile_id].stats[0].image}
+                  stat={PROFILES[profile_id].stats[0].name}
+                  amount={PROFILES[profile_id].stats[0].amount}></Stat>
+                <Stat
+                  image={PROFILES[profile_id].stats[1].image}
+                  stat={PROFILES[profile_id].stats[1].name}
+                  amount={PROFILES[profile_id].stats[1].amount}></Stat>
               </View>
               <View style={styles.row}>
-                <Stat image={manaIcon} stat='BTC' amount='150.000'></Stat>
-                <Stat image={fireIcon} stat='QQQ' amount='100.000'></Stat>
+                <Stat
+                  image={PROFILES[profile_id].stats[2].image}
+                  stat={PROFILES[profile_id].stats[2].name}
+                  amount={PROFILES[profile_id].stats[2].amount}></Stat>
+                <Stat
+                  image={PROFILES[profile_id].stats[3].image}
+                  stat={PROFILES[profile_id].stats[3].name}
+                  amount={PROFILES[profile_id].stats[3].amount}></Stat>
               </View>
             </View>
             <View style={styles.goal_container}>
               <Text style={styles.goal_title}>Next Goal:</Text>
-              <Text style={styles.goal_info}>950.000/980.000</Text>
+              <Text style={styles.goal_info}>
+                {totalAmount}/{PROFILES[profile_id].goal}
+              </Text>
             </View>
           </View>
+
           <Image
-            source={profiles[profile_id].level}
+            source={PROFILES[profile_id].level}
             style={styles.level_icon}></Image>
+
+          <NavBar></NavBar>
         </ImageBackground>
       </View>
     )
@@ -129,10 +119,11 @@ const styles = StyleSheet.create({
     width: 160,
     height: 160,
     position: 'absolute',
-    top: '3%',
+    top: '7%',
     alignSelf: 'center'
   },
   content: {
+    marginTop: 60,
     alignSelf: 'center',
     width: '90%',
     height: '65%',
@@ -210,7 +201,7 @@ const styles = StyleSheet.create({
   goal_info: {
     color: COLOR_WHITE,
     fontFamily: 'InknutAntiqua_300Light',
-    marginTop: 4,
+    marginTop: 7,
     marginLeft: 4,
     fontSize: 15
   },
@@ -219,6 +210,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '100%',
     marginBottom: 12,
-    marginLeft: 20,
+    marginLeft: 20
   }
 })
