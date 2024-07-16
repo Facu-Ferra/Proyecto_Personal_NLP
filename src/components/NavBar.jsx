@@ -6,6 +6,7 @@ import { COLOR_WHITE } from '../commons/constants/colors'
 import go_to_crew from '../../assets/images/buttons/go_to_crew.png'
 import go_to_history from '../../assets/images/buttons/go_to_history.png'
 import go_to_stats from '../../assets/images/buttons/go_to_stats.png'
+import { router } from 'expo-router'
 
 export default function NavBar() {
   return (
@@ -16,7 +17,9 @@ export default function NavBar() {
         <Text style={styles.label}>Stats</Text>
       </View>
       <View style={styles.buttons_container}>
-        <TouchableOpacity onPress={() => {}} style={styles.touchable}>
+        <TouchableOpacity
+          onPress={() => router.push('/inventory')}
+          style={styles.touchable}>
           <Image source={go_to_crew} style={styles.button}></Image>
         </TouchableOpacity>
 
