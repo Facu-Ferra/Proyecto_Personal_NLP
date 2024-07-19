@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ImageBackground, StyleSheet, Text, Image, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import Stat from '../src/components/Stat.jsx'
-import NavBar from '../src/components/NavBar.jsx'
+import { useLocalSearchParams } from 'expo-router'
 import tabern from '../assets/images/tabern.png'
 import { PROFILES } from '../src/commons/constants/helper.js'
 import {
@@ -10,81 +9,120 @@ import {
   COLOR_WHITE,
   COLOR_PALADIN,
   COLOR_BROWN_DASHBOARD,
-  COLOR_BLACK_GOAL_BACKGORUND,
-  COLOR_RED,
   COLOR_DARK_BORDER
 } from '../src/commons/constants/colors'
-import { useLocalSearchParams } from 'expo-router'
+import Stat from '../src/components/Stat.jsx'
+import NavBar from '../src/components/NavBar.jsx'
+import {
+  LevelIndicator,
+  LevelsModal,
+  NextGoalLabel,
+  NextGoalModal
+} from '../src/components/dashboard'
 
 export default function App() {
   const { profile_id } = useLocalSearchParams()
+  const profile = { ...PROFILES?.[profile_id] }
+  const {
+    text,
+    photo,
+    level,
+    title,
+    color,
+    stats,
+    class: className,
+    // crew,
+    goal
+  } = { ...profile }
 
-  const totalAmount = PROFILES[profile_id].stats.reduce((accumulator, stat) => {
+  const totalAmount = stats.reduce((accumulator, stat) => {
     return accumulator + stat.amount
   }, 0)
 
+  const [levelModalVisible, setLevelsModalVisible] = useState(false)
+  const [nextGoalModalVisible, setNextGoalModalVisible] = useState(false)
+
+  const handleLevelImagePress = () => {
+    setLevelsModalVisible(true)
+  }
+
+  const handleCloseModal = () => {
+    setLevelsModalVisible(false)
+  }
+
+  const handleNextGoalPress = () => {
+    setNextGoalModalVisible(true)
+  }
+
+  const handleCloseGoalModal = () => {
+    setNextGoalModalVisible(false)
+  }
+
   return (
     <View style={styles.container}>
-      <StatusBar style='light'></StatusBar>
+      <StatusBar style='light' />
       <ImageBackground source={tabern} style={styles.backImage}>
         <View style={styles.content}>
           <View style={styles.character}>
             <View style={styles.character_text}>
-              <Text
-                style={[
-                  styles.character_name,
-                  { textShadowColor: PROFILES[profile_id].color }
-                ]}>
-                {PROFILES[profile_id].text}
+              <Text style={[styles.character_name, { textShadowColor: color }]}>
+                {text}
               </Text>
-              <Text style={styles.stats}>
-                Class: {PROFILES[profile_id].class}
-              </Text>
-              <Text style={[styles.stats, { top: '60%' }]}>
-                Title: {PROFILES[profile_id].title}
-              </Text>
+              <Text style={styles.stats}>Class: {className}</Text>
+              <Text style={[styles.stats, { top: '60%' }]}>Title: {title}</Text>
             </View>
-            <Image
-              source={PROFILES[profile_id].photo}
-              style={styles.profileImage}></Image>
+            <Image source={photo} style={styles.profileImage} />
           </View>
           <View style={styles.main_stats_container}>
             <Text style={styles.main_stats_title}>Main Attributes</Text>
             <View style={styles.row}>
               <Stat
-                image={PROFILES[profile_id].stats[0].image}
-                stat={PROFILES[profile_id].stats[0].name}
-                amount={PROFILES[profile_id].stats[0].amount}></Stat>
+                image={stats[0].image}
+                stat={stats[0].name}
+                amount={stats[0].amount}
+              />
               <Stat
-                image={PROFILES[profile_id].stats[1].image}
-                stat={PROFILES[profile_id].stats[1].name}
-                amount={PROFILES[profile_id].stats[1].amount}></Stat>
+                image={stats[1].image}
+                stat={stats[1].name}
+                amount={stats[1].amount}
+              />
             </View>
             <View style={styles.row}>
               <Stat
-                image={PROFILES[profile_id].stats[2].image}
-                stat={PROFILES[profile_id].stats[2].name}
-                amount={PROFILES[profile_id].stats[2].amount}></Stat>
+                image={stats[2].image}
+                stat={stats[2].name}
+                amount={stats[2].amount}
+              />
               <Stat
-                image={PROFILES[profile_id].stats[3].image}
-                stat={PROFILES[profile_id].stats[3].name}
-                amount={PROFILES[profile_id].stats[3].amount}></Stat>
+                image={stats[3].image}
+                stat={stats[3].name}
+                amount={stats[3].amount}
+              />
             </View>
           </View>
-          <View style={styles.goal_container}>
-            <Text style={styles.goal_title}>Next Goal:</Text>
-            <Text style={styles.goal_info}>
-              {totalAmount}/{PROFILES[profile_id].goal}
-            </Text>
-          </View>
+          <NextGoalLabel
+            totalAmount={totalAmount}
+            goal={goal}
+            onPressNextGoalLabel={handleNextGoalPress}
+          />
         </View>
-
-        <Image
-          source={PROFILES[profile_id].level}
-          style={styles.level_icon}></Image>
-
-        <NavBar profile={profile_id}></NavBar>
+        <LevelIndicator
+          levelImage={level}
+          onLevelImagePress={handleLevelImagePress}
+        />
+        <NavBar profile={profile_id} />
       </ImageBackground>
+      <LevelsModal
+        visible={levelModalVisible}
+        levelImage={level}
+        onClose={handleCloseModal}
+      />
+      <NextGoalModal
+        currentGoal={goal}
+        visible={nextGoalModalVisible}
+        // levelImage={level}
+        onClose={handleCloseGoalModal}
+      />
     </View>
   )
 }
@@ -99,13 +137,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column'
-  },
-  level_icon: {
-    width: 160,
-    height: 160,
-    position: 'absolute',
-    top: '7%',
-    alignSelf: 'center'
   },
   content: {
     marginTop: 60,
@@ -173,28 +204,6 @@ const styles = StyleSheet.create({
     fontFamily: 'InknutAntiqua_300Light',
     alignSelf: 'center',
     fontSize: 25
-  },
-  goal_container: {
-    alignSelf: 'center',
-    width: '90%',
-    marginTop: '10%',
-    height: '10%',
-    backgroundColor: COLOR_BLACK_GOAL_BACKGORUND,
-    borderRadius: 40,
-    flexDirection: 'row'
-  },
-  goal_title: {
-    color: COLOR_RED,
-    fontFamily: 'InknutAntiqua_300Light',
-    marginLeft: '7%',
-    fontSize: 20
-  },
-  goal_info: {
-    color: COLOR_WHITE,
-    fontFamily: 'InknutAntiqua_300Light',
-    marginTop: 7,
-    marginLeft: 4,
-    fontSize: 15
   },
   row: {
     flexDirection: 'row',
