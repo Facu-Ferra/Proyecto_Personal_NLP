@@ -59,7 +59,7 @@ export default function App() {
             </TouchableOpacity>
           </View>
           <View style={styles.cardsWrapper}>
-            <ScrollView style={{ flex: 1, width: '100%', height: '90%' }}>
+            <ScrollView style={{ flex: 1, width: '100%', height: '91.4%' }}>
               <View style={styles.scrollView}>
                 {PROFILES[profile_id].crew.map(
                   (
