@@ -11,7 +11,8 @@ import {
   COLOR_PALADIN,
   COLOR_BROWN_DASHBOARD,
   COLOR_BLACK_GOAL_BACKGORUND,
-  COLOR_RED
+  COLOR_RED,
+  COLOR_DARK_BORDER
 } from '../src/commons/constants/colors'
 import { useLocalSearchParams } from 'expo-router'
 
@@ -114,7 +115,9 @@ const styles = StyleSheet.create({
     marginBottom: '20%',
     backgroundColor: COLOR_GRAY_DASHBOARD,
     borderRadius: 40,
-    position: 'relative'
+    position: 'relative',
+    borderWidth: 1.5,
+    borderColor: COLOR_DARK_BORDER
   },
   profileImage: {
     width: '38%',
@@ -123,7 +126,9 @@ const styles = StyleSheet.create({
     right: 15,
     top: 15,
     borderRadius: 40,
-    position: 'absolute'
+    position: 'absolute',
+    borderWidth: 1,
+    borderColor: COLOR_DARK_BORDER
   },
   character: {
     flexDirection: 'row',
@@ -159,7 +164,9 @@ const styles = StyleSheet.create({
     height: '38%',
     backgroundColor: COLOR_BROWN_DASHBOARD,
     borderRadius: 40,
-    position: 'relative'
+    position: 'relative',
+    borderWidth: 1.5,
+    borderColor: COLOR_DARK_BORDER
   },
   main_stats_title: {
     color: COLOR_WHITE,

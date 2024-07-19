@@ -1,5 +1,12 @@
-import React from 'react'
-import { ImageBackground, StyleSheet, View, ScrollView } from 'react-native'
+import React, { useState } from 'react'
+import {
+  ImageBackground,
+  StyleSheet,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Text
+} from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import tabern from '../assets/images/tabern.png'
 import Card from '../src/components/Card.jsx'
@@ -7,30 +14,63 @@ import { PROFILES } from '../src/commons/constants/helper.js'
 import {
   COLOR_GRAY_DASHBOARD,
   COLOR_BLACK_GOAL_BACKGORUND,
-  COLOR_DARK_BORDER
+  COLOR_DARK_BORDER,
+  COLOR_WHITE,
+  COLOR_GRAY_NEW_PROFILE_TEXT
 } from '../src/commons/constants/colors'
 import { useLocalSearchParams } from 'expo-router'
 
 export default function App() {
   const { profile_id } = useLocalSearchParams()
+  const [selectedTab, setSelectedTab] = useState(1)
+
+  const changeTab = (option) => {
+    setSelectedTab(option)
+  }
 
   return (
     <View style={styles.container}>
       <StatusBar style='light'></StatusBar>
       <ImageBackground source={tabern} style={styles.backImage}>
         <View style={styles.optionsWrapper}></View>
-        <View style={styles.cardsWrapper}>
-          <ScrollView style={{ flex: 1, width: '100%', height: '95%' }}>
-            <View style={styles.scrollView}>
-              {PROFILES[profile_id].crew.map(
-                (
-                  item //Por cada personaje que tenga el usuario renderiza una card
-                ) => (
-                  <Card key={item.id} image={item.image} />
-                )
-              )}
-            </View>
-          </ScrollView>
+        <View style={styles.contentWrapper}>
+          <View style={styles.switchTab}>
+            <TouchableOpacity
+              style={styles.buttonTab}
+              onPress={() => changeTab(1)}>
+              <Text
+                style={[
+                  styles.textButton,
+                  selectedTab === 1 && styles.selectedTab // Aplica el estilo si la tarjeta está seleccionada
+                ]}>
+                Crew
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.buttonTab}
+              onPress={() => changeTab(2)}>
+              <Text
+                style={[
+                  styles.textButton,
+                  selectedTab === 2 && styles.selectedTab // Aplica el estilo si la tarjeta está seleccionada
+                ]}>
+                Items
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.cardsWrapper}>
+            <ScrollView style={{ flex: 1, width: '100%', height: '90%' }}>
+              <View style={styles.scrollView}>
+                {PROFILES[profile_id].crew.map(
+                  (
+                    item //Por cada personaje que tenga el usuario renderiza una card
+                  ) => (
+                    <Card key={item.id} image={item.image} />
+                  )
+                )}
+              </View>
+            </ScrollView>
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -51,7 +91,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: COLOR_GRAY_DASHBOARD,
     top: '8%',
-    height: '20%',
+    height: '14%',
     width: '90%',
     alignSelf: 'center',
     borderTopLeftRadius: 40,
@@ -60,24 +100,42 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderColor: COLOR_DARK_BORDER
   },
-  cardsWrapper: {
-    alignSelf: 'center',
+  contentWrapper: {
     width: '90%',
-    height: '70%',
+    height: '76%',
+    alignSelf: 'center',
     backgroundColor: COLOR_BLACK_GOAL_BACKGORUND,
-    borderBottomLeftRadius: 40,
-    borderBottomRightRadius: 40,
     position: 'absolute',
     bottom: '2%',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
     borderWidth: 2,
     borderColor: COLOR_DARK_BORDER
+  },
+  cardsWrapper: {
+    flexWrap: 'wrap',
+    flexDirection: 'row'
+  },
+  switchTab: {
+    height: '8%',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  buttonTab: {
+    width: '45%',
+    alignItems: 'center'
+  },
+  textButton: {
+    color: COLOR_GRAY_NEW_PROFILE_TEXT,
+    fontFamily: 'InknutAntiqua_300Light',
+    fontSize: 16
   },
   scrollView: {
     flex: 1,
     flexWrap: 'wrap',
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  selectedTab: {
+    color: COLOR_WHITE
   }
 })

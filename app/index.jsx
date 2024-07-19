@@ -18,10 +18,6 @@ import { router } from 'expo-router'
 
 export default function App() {
   const [selectedCard, setSelectedCard] = useState(0)
-  /*let profiles = [
-    { text: 'Benoffi', photo: character1, class: 'Paladin' },
-    { text: 'Chaldu', photo: character2, class: 'Necromancer' }
-  ]*/
 
   const selectCard = (index) => {
     setSelectedCard(index)
