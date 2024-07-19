@@ -1,5 +1,12 @@
 import character1 from '../../../assets/characters/paladin.jpg'
 import character2 from '../../../assets/characters/necromancer.jpg'
+import character3 from '../../../assets/characters/Knight.jpg'
+import character4 from '../../../assets/characters/Dark_knight.jpg'
+import character5 from '../../../assets/characters/Fallen_Angel.jpg'
+import character6 from '../../../assets/characters/Magic_Knight.jpg'
+import character7 from '../../../assets/characters/Piromaniac.jpg'
+import character8 from '../../../assets/characters/Priest.jpg'
+import character9 from '../../../assets/characters/Wizard.jpg'
 
 import lifeIcon from '../../../assets/images/stats-icon/life.png'
 import divineIcon from '../../../assets/images/stats-icon/divine.png'
@@ -29,6 +36,32 @@ export const PROFILES = [
       { name: 'ARS', amount: 20000, image: manaIcon },
       { name: 'QQQ', amount: 30000, image: fireIcon }
     ],
+    crew: [
+      {
+        id: 1,
+        image: character4
+      },
+      {
+        id: 2,
+        image: character7
+      },
+      {
+        id: 3,
+        image: character6
+      },
+      {
+        id: 4,
+        image: character5
+      },
+      {
+        id: 5,
+        image: character3
+      },
+      {
+        id: 6,
+        image: character8
+      }
+    ],
     goal: 200000
   },
   {
@@ -43,6 +76,32 @@ export const PROFILES = [
       { name: 'USD', amount: 140000, image: lifeIcon },
       { name: 'ARS', amount: 200000, image: manaIcon },
       { name: 'QQQ', amount: 50000, image: fireIcon }
+    ],
+    crew: [
+      {
+        id: 1,
+        image: character3
+      },
+      {
+        id: 2,
+        image: character6
+      },
+      {
+        id: 3,
+        image: character5
+      },
+      {
+        id: 4,
+        image: character4
+      },
+      {
+        id: 5,
+        image: character9
+      },
+      {
+        id: 6,
+        image: character8
+      }
     ],
     goal: 900000
   }

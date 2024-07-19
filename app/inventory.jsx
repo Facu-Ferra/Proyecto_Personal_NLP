@@ -2,50 +2,39 @@ import React from 'react'
 import { ImageBackground, StyleSheet, View, ScrollView } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import tabern from '../assets/images/tabern.png'
-import AppLoading from 'expo-app-loading'
 import Card from '../src/components/Card.jsx'
-import {
-  useFonts,
-  InknutAntiqua_300Light,
-  InknutAntiqua_600SemiBold
-} from '@expo-google-fonts/inknut-antiqua'
+import { PROFILES } from '../src/commons/constants/helper.js'
 import {
   COLOR_GRAY_DASHBOARD,
-  COLOR_BLACK_GOAL_BACKGORUND
+  COLOR_BLACK_GOAL_BACKGORUND,
+  COLOR_DARK_BORDER
 } from '../src/commons/constants/colors'
+import { useLocalSearchParams } from 'expo-router'
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    InknutAntiqua_300Light,
-    InknutAntiqua_600SemiBold
-  })
+  const { profile_id } = useLocalSearchParams()
 
-  if (!fontsLoaded) {
-    return <AppLoading />
-  } else {
-    return (
-      <View style={styles.container}>
-        <StatusBar style='light'></StatusBar>
-        <ImageBackground source={tabern} style={styles.backImage}>
-          <View style={styles.optionsWrapper}></View>
-          <View style={styles.cardsWrapper}>
-            <ScrollView style={{ flex: 1, width: '100%', height: '95%' }}>
-              <View style={styles.scrollView}>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-              </View>
-            </ScrollView>
-          </View>
-        </ImageBackground>
-      </View>
-    )
-  }
+  return (
+    <View style={styles.container}>
+      <StatusBar style='light'></StatusBar>
+      <ImageBackground source={tabern} style={styles.backImage}>
+        <View style={styles.optionsWrapper}></View>
+        <View style={styles.cardsWrapper}>
+          <ScrollView style={{ flex: 1, width: '100%', height: '95%' }}>
+            <View style={styles.scrollView}>
+              {PROFILES[profile_id].crew.map(
+                (
+                  item //Por cada personaje que tenga el usuario renderiza una card
+                ) => (
+                  <Card key={item.id} image={item.image} />
+                )
+              )}
+            </View>
+          </ScrollView>
+        </View>
+      </ImageBackground>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -66,7 +55,10 @@ const styles = StyleSheet.create({
     width: '90%',
     alignSelf: 'center',
     borderTopLeftRadius: 40,
-    borderTopRightRadius: 40
+    borderTopRightRadius: 40,
+    borderWidth: 2,
+    borderBottomWidth: 0,
+    borderColor: COLOR_DARK_BORDER
   },
   cardsWrapper: {
     alignSelf: 'center',
@@ -78,7 +70,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: '2%',
     flexWrap: 'wrap',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderWidth: 2,
+    borderColor: COLOR_DARK_BORDER
   },
   scrollView: {
     flex: 1,

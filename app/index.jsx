@@ -9,25 +9,14 @@ import {
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import tabern from '../assets/images/tabern.png'
-import AppLoading from 'expo-app-loading'
 import StartBtn from '../src/components/StartBtn'
 import ProfileSelect from '../src/components/ProfileSelect'
 import { PROFILES } from '../src/commons/constants/helper.js'
 import title from '../assets/images/title.png'
-import {
-  useFonts,
-  InknutAntiqua_300Light,
-  InknutAntiqua_600SemiBold
-} from '@expo-google-fonts/inknut-antiqua'
 import { COLOR_WHITE } from '../src/commons/constants/colors'
 import { router } from 'expo-router'
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    InknutAntiqua_300Light,
-    InknutAntiqua_600SemiBold
-  })
-
   const [selectedCard, setSelectedCard] = useState(0)
   /*let profiles = [
     { text: 'Benoffi', photo: character1, class: 'Paladin' },
@@ -38,45 +27,41 @@ export default function App() {
     setSelectedCard(index)
   }
 
-  if (!fontsLoaded) {
-    return <AppLoading />
-  } else {
-    return (
-      <View style={styles.container}>
-        <StatusBar style='light'></StatusBar>
-        <ImageBackground source={tabern} style={styles.backImage}>
-          <View style={styles.profilesContainer}>
-            <Image source={title} style={styles.title}></Image>
+  return (
+    <View style={styles.container}>
+      <StatusBar style='light'></StatusBar>
+      <ImageBackground source={tabern} style={styles.backImage}>
+        <View style={styles.profilesContainer}>
+          <Image source={title} style={styles.title}></Image>
 
-            {PROFILES.map((elemento, index) => (
-              <TouchableOpacity onPress={() => selectCard(index)} key={index}>
-                <ProfileSelect
-                  text={elemento.text}
-                  photo={elemento.photo}
-                  class={elemento.class}
-                  selected={selectedCard === index}></ProfileSelect>
-              </TouchableOpacity>
-            ))}
-
-            {PROFILES.length < 3 && (
-              <TouchableOpacity onPress={() => newProfile()}>
-                <ProfileSelect></ProfileSelect>
-              </TouchableOpacity>
-            )}
-          </View>
-          <View>
-            <Text style={styles.text}>¿Ready to keep growing?</Text>
-            <TouchableOpacity
-              onPress={() =>
-                router.push('/dashboard?profile_id=' + selectedCard)
-              }>
-              <StartBtn text='Start' />
+          {PROFILES.map((elemento, index) => (
+            <TouchableOpacity onPress={() => selectCard(index)} key={index}>
+              <ProfileSelect
+                text={elemento.text}
+                photo={elemento.photo}
+                class={elemento.class}
+                selected={selectedCard === index}></ProfileSelect>
             </TouchableOpacity>
-          </View>
-        </ImageBackground>
-      </View>
-    )
-  }
+          ))}
+
+          {PROFILES.length < 3 && (
+            <TouchableOpacity onPress={() => newProfile()}>
+              <ProfileSelect></ProfileSelect>
+            </TouchableOpacity>
+          )}
+        </View>
+        <View>
+          <Text style={styles.text}>¿Ready to keep growing?</Text>
+          <TouchableOpacity
+            onPress={() =>
+              router.push('/dashboard?profile_id=' + selectedCard)
+            }>
+            <StartBtn text='Start' />
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </View>
+  )
 }
 
 const newProfile = () => {}

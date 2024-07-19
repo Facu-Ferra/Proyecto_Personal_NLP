@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Slot, SplashScreen } from 'expo-router'
+import { Slot } from 'expo-router'
+import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 import {
   InknutAntiqua_300Light,

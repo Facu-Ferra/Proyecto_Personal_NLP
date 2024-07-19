@@ -8,26 +8,24 @@ import go_to_history from '../../assets/images/buttons/go_to_history.png'
 import go_to_stats from '../../assets/images/buttons/go_to_stats.png'
 import { router } from 'expo-router'
 
-export default function NavBar() {
+export default function NavBar(props) {
   return (
     <View style={styles.container}>
-      <View style={styles.labels_container}>
-        <Text style={styles.label}>Crew</Text>
-        <Text style={styles.label}>History</Text>
-        <Text style={styles.label}>Stats</Text>
-      </View>
       <View style={styles.buttons_container}>
         <TouchableOpacity
-          onPress={() => router.push('/inventory')}
+          onPress={() => router.push('/inventory?profile_id=' + props.profile)}
           style={styles.touchable}>
+          <Text style={styles.label}>Inventory</Text>
           <Image source={go_to_crew} style={styles.button}></Image>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {}} style={styles.touchable}>
+          <Text style={styles.label}>History</Text>
           <Image source={go_to_history} style={styles.button}></Image>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => {}} style={styles.touchable}>
+          <Text style={styles.label}>Stats</Text>
           <Image source={go_to_stats} style={styles.button}></Image>
         </TouchableOpacity>
       </View>
@@ -40,10 +38,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: '100%',
     position: 'absolute'
-  },
-  labels_container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around'
   },
   label: {
     color: COLOR_WHITE,

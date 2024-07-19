@@ -4,14 +4,7 @@ import { StatusBar } from 'expo-status-bar'
 import Stat from '../src/components/Stat.jsx'
 import NavBar from '../src/components/NavBar.jsx'
 import tabern from '../assets/images/tabern.png'
-import AppLoading from 'expo-app-loading'
 import { PROFILES } from '../src/commons/constants/helper.js'
-
-import {
-  useFonts,
-  InknutAntiqua_300Light,
-  InknutAntiqua_600SemiBold
-} from '@expo-google-fonts/inknut-antiqua'
 import {
   COLOR_GRAY_DASHBOARD,
   COLOR_WHITE,
@@ -23,85 +16,76 @@ import {
 import { useLocalSearchParams } from 'expo-router'
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    InknutAntiqua_300Light,
-    InknutAntiqua_600SemiBold
-  })
-
   const { profile_id } = useLocalSearchParams()
 
   const totalAmount = PROFILES[profile_id].stats.reduce((accumulator, stat) => {
     return accumulator + stat.amount
   }, 0)
 
-  if (!fontsLoaded) {
-    return <AppLoading />
-  } else {
-    return (
-      <View style={styles.container}>
-        <StatusBar style='light'></StatusBar>
-        <ImageBackground source={tabern} style={styles.backImage}>
-          <View style={styles.content}>
-            <View style={styles.character}>
-              <View style={styles.character_text}>
-                <Text
-                  style={[
-                    styles.character_name,
-                    { textShadowColor: PROFILES[profile_id].color }
-                  ]}>
-                  {PROFILES[profile_id].text}
-                </Text>
-                <Text style={styles.stats}>
-                  Class: {PROFILES[profile_id].class}
-                </Text>
-                <Text style={[styles.stats, { top: '60%' }]}>
-                  Title: {PROFILES[profile_id].title}
-                </Text>
-              </View>
-              <Image
-                source={PROFILES[profile_id].photo}
-                style={styles.profileImage}></Image>
-            </View>
-            <View style={styles.main_stats_container}>
-              <Text style={styles.main_stats_title}>Main Attributes</Text>
-              <View style={styles.row}>
-                <Stat
-                  image={PROFILES[profile_id].stats[0].image}
-                  stat={PROFILES[profile_id].stats[0].name}
-                  amount={PROFILES[profile_id].stats[0].amount}></Stat>
-                <Stat
-                  image={PROFILES[profile_id].stats[1].image}
-                  stat={PROFILES[profile_id].stats[1].name}
-                  amount={PROFILES[profile_id].stats[1].amount}></Stat>
-              </View>
-              <View style={styles.row}>
-                <Stat
-                  image={PROFILES[profile_id].stats[2].image}
-                  stat={PROFILES[profile_id].stats[2].name}
-                  amount={PROFILES[profile_id].stats[2].amount}></Stat>
-                <Stat
-                  image={PROFILES[profile_id].stats[3].image}
-                  stat={PROFILES[profile_id].stats[3].name}
-                  amount={PROFILES[profile_id].stats[3].amount}></Stat>
-              </View>
-            </View>
-            <View style={styles.goal_container}>
-              <Text style={styles.goal_title}>Next Goal:</Text>
-              <Text style={styles.goal_info}>
-                {totalAmount}/{PROFILES[profile_id].goal}
+  return (
+    <View style={styles.container}>
+      <StatusBar style='light'></StatusBar>
+      <ImageBackground source={tabern} style={styles.backImage}>
+        <View style={styles.content}>
+          <View style={styles.character}>
+            <View style={styles.character_text}>
+              <Text
+                style={[
+                  styles.character_name,
+                  { textShadowColor: PROFILES[profile_id].color }
+                ]}>
+                {PROFILES[profile_id].text}
+              </Text>
+              <Text style={styles.stats}>
+                Class: {PROFILES[profile_id].class}
+              </Text>
+              <Text style={[styles.stats, { top: '60%' }]}>
+                Title: {PROFILES[profile_id].title}
               </Text>
             </View>
+            <Image
+              source={PROFILES[profile_id].photo}
+              style={styles.profileImage}></Image>
           </View>
+          <View style={styles.main_stats_container}>
+            <Text style={styles.main_stats_title}>Main Attributes</Text>
+            <View style={styles.row}>
+              <Stat
+                image={PROFILES[profile_id].stats[0].image}
+                stat={PROFILES[profile_id].stats[0].name}
+                amount={PROFILES[profile_id].stats[0].amount}></Stat>
+              <Stat
+                image={PROFILES[profile_id].stats[1].image}
+                stat={PROFILES[profile_id].stats[1].name}
+                amount={PROFILES[profile_id].stats[1].amount}></Stat>
+            </View>
+            <View style={styles.row}>
+              <Stat
+                image={PROFILES[profile_id].stats[2].image}
+                stat={PROFILES[profile_id].stats[2].name}
+                amount={PROFILES[profile_id].stats[2].amount}></Stat>
+              <Stat
+                image={PROFILES[profile_id].stats[3].image}
+                stat={PROFILES[profile_id].stats[3].name}
+                amount={PROFILES[profile_id].stats[3].amount}></Stat>
+            </View>
+          </View>
+          <View style={styles.goal_container}>
+            <Text style={styles.goal_title}>Next Goal:</Text>
+            <Text style={styles.goal_info}>
+              {totalAmount}/{PROFILES[profile_id].goal}
+            </Text>
+          </View>
+        </View>
 
-          <Image
-            source={PROFILES[profile_id].level}
-            style={styles.level_icon}></Image>
+        <Image
+          source={PROFILES[profile_id].level}
+          style={styles.level_icon}></Image>
 
-          <NavBar></NavBar>
-        </ImageBackground>
-      </View>
-    )
-  }
+        <NavBar profile={profile_id}></NavBar>
+      </ImageBackground>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
