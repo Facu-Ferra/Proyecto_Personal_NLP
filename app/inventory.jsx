@@ -9,7 +9,8 @@ import {
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import tabern from '../assets/images/tabern.png'
-import Card from '../src/components/Card.jsx'
+import { Card, DetailedCardModal } from '../src/components/Inventory'
+
 import { PROFILES } from '../src/commons/constants/helper.js'
 import {
   COLOR_GRAY_DASHBOARD,
@@ -23,20 +24,37 @@ import { useLocalSearchParams } from 'expo-router'
 export default function App() {
   const { profile_id } = useLocalSearchParams()
   const [selectedTab, setSelectedTab] = useState(1)
-
+  const [detailedCardModalVisible, setdetailedCardModalVisible] =
+    useState(false)
   const changeTab = (option) => {
     setSelectedTab(option)
+  }
+
+  const handleCardImagePress = () => {
+    setdetailedCardModalVisible(true)
+  }
+
+  const handleCloseModal = () => {
+    setdetailedCardModalVisible(false)
   }
 
   const renderCards = () => {
     switch (selectedTab) {
       case 1:
         return PROFILES[profile_id].crew.map((item) => (
-          <Card key={item.id} image={item.image} />
+          <Card
+            key={item.id}
+            image={item.image}
+            onCardImagePress={handleCardImagePress}
+          />
         ))
       case 2:
         return PROFILES[profile_id].items.map((item) => (
-          <Card key={item.id} image={item.image} />
+          <Card
+            key={item.id}
+            image={item.image}
+            onCardImagePress={handleCardImagePress}
+          />
         ))
       default:
         return null
@@ -80,6 +98,10 @@ export default function App() {
           </View>
         </View>
       </ImageBackground>
+      <DetailedCardModal
+        visible={detailedCardModalVisible}
+        onClose={handleCloseModal}
+      />
     </View>
   )
 }
