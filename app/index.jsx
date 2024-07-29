@@ -84,9 +84,9 @@ const styles = StyleSheet.create({
   },
   title: {
     alignSelf: 'center',
-    height: '13%',
+    height: '12%',
+    aspectRatio: 6 / 1,
     justifyContent: 'center',
-    marginBottom: 5,
-    width: '82%'
+    marginBottom: 5
   }
 })
