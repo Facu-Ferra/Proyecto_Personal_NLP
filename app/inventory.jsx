@@ -28,6 +28,21 @@ export default function App() {
     setSelectedTab(option)
   }
 
+  const renderCards = () => {
+    switch (selectedTab) {
+      case 1:
+        return PROFILES[profile_id].crew.map((item) => (
+          <Card key={item.id} image={item.image} />
+        ))
+      case 2:
+        return PROFILES[profile_id].items.map((item) => (
+          <Card key={item.id} image={item.image} />
+        ))
+      default:
+        return null
+    }
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style='light'></StatusBar>
@@ -59,16 +74,8 @@ export default function App() {
             </TouchableOpacity>
           </View>
           <View style={styles.cardsWrapper}>
-            <ScrollView style={{ flex: 1, width: '100%', height: '91.4%' }}>
-              <View style={styles.scrollView}>
-                {PROFILES[profile_id].crew.map(
-                  (
-                    item //Por cada personaje que tenga el usuario renderiza una card
-                  ) => (
-                    <Card key={item.id} image={item.image} />
-                  )
-                )}
-              </View>
+            <ScrollView style={{ flex: 1, width: '100%', height: '100%' }}>
+              <View style={styles.scrollView}>{renderCards()}</View>
             </ScrollView>
           </View>
         </View>
@@ -111,8 +118,8 @@ const styles = StyleSheet.create({
     borderColor: COLOR_DARK_BORDER
   },
   cardsWrapper: {
-    flexWrap: 'wrap',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flex: 1
   },
   switchTab: {
     height: '8%',

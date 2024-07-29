@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
   },
   buttons_container: {
     flexDirection: 'row',
-    height: 105,
-    width: '100%',
+    height: '100%',
+    aspectRatio: 4,
     alignItems: 'flex-end',
     justifyContent: 'space-around',
     bottom: 0,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   button: {
-    width: '65%',
-    height: '100%'
+    height: '100%',
+    aspectRatio: 1
   }
 })

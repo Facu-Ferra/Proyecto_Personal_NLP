@@ -17,6 +17,8 @@ import darkIcon from '../../../assets/images/stats-icon/dark.png'
 import level1 from '../../../assets/images/level-icon/1.png'
 import level10 from '../../../assets/images/level-icon/10.png'
 
+import item1 from '../../../assets/images/items/sword.png'
+
 /* 
     Aca van todos los datos harodeados hasta que se 
     implemente persistencia de datos por storage o backend
@@ -62,6 +64,12 @@ export const PROFILES = [
         image: character8
       }
     ],
+    items: [
+      {
+        id: 1,
+        image: item1
+      }
+    ],
     goal: 200000
   },
   {
@@ -101,6 +109,12 @@ export const PROFILES = [
       {
         id: 6,
         image: character8
+      }
+    ],
+    items: [
+      {
+        id: 1,
+        image: item1
       }
     ],
     goal: 900000

@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   main_stats_container: {
     alignSelf: 'center',
     width: '90%',
-    height: '38%',
+    paddingBottom: 5,
     backgroundColor: COLOR_BROWN_DASHBOARD,
     borderRadius: 40,
     position: 'relative',

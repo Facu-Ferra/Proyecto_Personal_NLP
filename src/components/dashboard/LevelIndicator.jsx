@@ -20,8 +20,8 @@ export default LevelIndicator
 const styles = StyleSheet.create({
   level_icon: {
     zIndex: 1,
-    width: 160,
-    height: 160,
+    width: '40%',
+    aspectRatio: 1,
     position: 'absolute',
     top: '7%',
     alignSelf: 'center'

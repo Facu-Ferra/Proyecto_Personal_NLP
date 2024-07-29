@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
   },
   image: {
     position: 'relative',
-    width: 50,
-    height: 50,
+    width: '30%',
+    aspectRatio: 1,
     alignSelf: 'center'
   },
   textContainer: {

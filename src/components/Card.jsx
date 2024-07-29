@@ -25,7 +25,7 @@ export default function ProfileSelect(props) {
 const styles = StyleSheet.create({
   card: {
     width: '40%',
-    height: 200,
+    aspectRatio: 1 / 1.37,
     marginBottom: 20,
     borderRadius: 20,
     alignItems: 'center',
