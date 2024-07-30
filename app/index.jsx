@@ -5,53 +5,75 @@ import {
   Text,
   Image,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
+import { router } from 'expo-router'
 import tabern from '../assets/images/tabern.png'
+import title from '../assets/images/title.png'
+import { PROFILES } from '../src/commons/constants/helper.js'
+import {
+  COLOR_GRAY_DASHBOARD,
+  COLOR_WHITE
+} from '../src/commons/constants/colors'
 import StartBtn from '../src/components/StartBtn'
 import ProfileSelect from '../src/components/ProfileSelect'
-import { PROFILES } from '../src/commons/constants/helper.js'
-import title from '../assets/images/title.png'
-import { COLOR_WHITE } from '../src/commons/constants/colors'
-import { router } from 'expo-router'
+
+const Divider = () => {
+  return <View style={styles.divider} />
+}
 
 export default function App() {
   const [selectedCard, setSelectedCard] = useState(0)
 
-  const selectCard = (index) => {
-    setSelectedCard(index)
+  const handleStartPress = () => {
+    router.push('/dashboard?profile_id=' + selectedCard)
+  }
+
+  const renderProfileItem = (elemento, index) => {
+    const handleItemPress = (index) => {
+      setSelectedCard(index)
+    }
+    return (
+      <TouchableOpacity
+        style={styles.item}
+        onPress={handleItemPress}
+        key={index}>
+        <ProfileSelect
+          text={elemento.text}
+          photo={elemento.photo}
+          class={elemento.class}
+          selected={selectedCard === index}
+        />
+      </TouchableOpacity>
+    )
+  }
+
+  const renderAddProfileItem = () => {
+    if (PROFILES.length >= 3) return
+    return (
+      <TouchableOpacity onPress={() => newProfile()}>
+        <ProfileSelect />
+      </TouchableOpacity>
+    )
   }
 
   return (
     <View style={styles.container}>
-      <StatusBar style='light'></StatusBar>
+      <StatusBar style='light' />
       <ImageBackground source={tabern} style={styles.backImage}>
         <View style={styles.profilesContainer}>
-          <Image source={title} style={styles.title}></Image>
-
-          {PROFILES.map((elemento, index) => (
-            <TouchableOpacity onPress={() => selectCard(index)} key={index}>
-              <ProfileSelect
-                text={elemento.text}
-                photo={elemento.photo}
-                class={elemento.class}
-                selected={selectedCard === index}></ProfileSelect>
-            </TouchableOpacity>
-          ))}
-
-          {PROFILES.length < 3 && (
-            <TouchableOpacity onPress={() => newProfile()}>
-              <ProfileSelect></ProfileSelect>
-            </TouchableOpacity>
-          )}
+          <Image source={title} style={styles.title} />
+          <ScrollView>
+            {PROFILES.map(renderProfileItem)}
+            {renderAddProfileItem()}
+          </ScrollView>
         </View>
-        <View>
+        <View style={styles.footer}>
+          <Divider />
           <Text style={styles.text}>¿Ready to keep growing?</Text>
-          <TouchableOpacity
-            onPress={() =>
-              router.push('/dashboard?profile_id=' + selectedCard)
-            }>
+          <TouchableOpacity onPress={handleStartPress}>
             <StartBtn text='Start' />
           </TouchableOpacity>
         </View>
@@ -72,8 +94,21 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column'
   },
+  divider: {
+    alignSelf: 'center',
+    height: 2,
+    backgroundColor: COLOR_GRAY_DASHBOARD,
+    width: '85%'
+  },
+  footer: {
+    flex: 0.3
+  },
+  item: {
+    flex: 1
+  },
   profilesContainer: {
-    marginTop: '33%'
+    marginTop: '33%',
+    flex: 0.7
   },
   text: {
     color: COLOR_WHITE,
