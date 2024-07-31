@@ -9,7 +9,6 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native'
-import character3 from '../../../assets/characters/Knight.jpg'
 import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import {
@@ -20,7 +19,7 @@ import {
   COLOR_LIGHT_BORDER
 } from '../../commons/constants/colors'
 
-const DetailedCardModal = ({ visible, onClose }) => {
+const DetailedCardModal = ({ visible, onClose, image }) => {
   const handleClose = () => {
     onClose?.()
   }
@@ -51,7 +50,7 @@ const DetailedCardModal = ({ visible, onClose }) => {
             }}>
             Reinhard
           </Text>
-          <Image source={character3} style={styles.image} />
+          <Image source={image} style={styles.image} />
           <ScrollView
             style={{ width: '100%', height: '100%', marginTop: 15 }}
             showsVerticalScrollIndicator={true}

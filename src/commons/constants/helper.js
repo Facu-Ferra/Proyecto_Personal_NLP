@@ -13,6 +13,7 @@ import divineIcon from '../../../assets/images/stats-icon/divine.png'
 import manaIcon from '../../../assets/images/stats-icon/mana.png'
 import fireIcon from '../../../assets/images/stats-icon/fire.png'
 import darkIcon from '../../../assets/images/stats-icon/dark.png'
+import armorIcon from '../../../assets/images/stats-icon/armor.png'
 
 import level1 from '../../../assets/images/level-icon/1.png'
 import level10 from '../../../assets/images/level-icon/10.png'
@@ -33,10 +34,12 @@ export const PROFILES = [
     title: 'Apprentice',
     color: '#89d3d7',
     stats: [
-      { name: 'USD', amount: 50000, image: lifeIcon },
-      { name: 'BTC', amount: 45000, image: divineIcon },
-      { name: 'ARS', amount: 20000, image: manaIcon },
-      { name: 'QQQ', amount: 30000, image: fireIcon }
+      { name: 'USD', amount: 140000, image: lifeIcon },
+      { name: 'ARS', amount: 200000, image: manaIcon },
+      { name: 'Com...', amount: 0, image: armorIcon },
+      { name: 'Stocks', amount: 50000, image: fireIcon },
+      { name: 'Cripto', amount: 0, image: divineIcon },
+      { name: 'Other', amount: 500000, image: darkIcon }
     ],
     crew: [
       {
@@ -80,10 +83,12 @@ export const PROFILES = [
     title: 'King of Ashes',
     color: '#9F4CD4',
     stats: [
-      { name: 'NFC', amount: 500000, image: darkIcon },
       { name: 'USD', amount: 140000, image: lifeIcon },
       { name: 'ARS', amount: 200000, image: manaIcon },
-      { name: 'QQQ', amount: 50000, image: fireIcon }
+      { name: 'Com...', amount: 0, image: armorIcon },
+      { name: 'Stocks', amount: 50000, image: fireIcon },
+      { name: 'Cripto', amount: 0, image: divineIcon },
+      { name: 'Other', amount: 500000, image: darkIcon }
     ],
     crew: [
       {
@@ -120,3 +125,13 @@ export const PROFILES = [
     goal: 900000
   }
 ]
+
+export const Stats = {
+  stats: [
+    { name: 'NFC', amount: 500000, image: lifeIcon },
+    { name: 'NFC', amount: 500000, image: manaIcon },
+    { name: 'USD', amount: 140000, image: fireIcon },
+    { name: 'ARS', amount: 200000, image: divineIcon },
+    { name: 'QQQ', amount: 50000, image: darkIcon }
+  ]
+}

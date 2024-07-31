@@ -24,7 +24,9 @@ export default function NavBar(props) {
           <Image source={go_to_history} style={styles.button}></Image>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}} style={styles.touchable}>
+        <TouchableOpacity
+          onPress={() => router.push('/edit-stats?profile_id=' + props.profile)}
+          style={styles.touchable}>
           <Text style={styles.label}>Stats</Text>
           <Image source={go_to_stats} style={styles.button}></Image>
         </TouchableOpacity>

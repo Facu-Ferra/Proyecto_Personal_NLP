@@ -26,11 +26,13 @@ export default function App() {
   const [selectedTab, setSelectedTab] = useState(1)
   const [detailedCardModalVisible, setdetailedCardModalVisible] =
     useState(false)
+  const [selectedImage, setSelectedImage] = useState(null)
   const changeTab = (option) => {
     setSelectedTab(option)
   }
 
-  const handleCardImagePress = () => {
+  const handleCardImagePress = (image) => {
+    setSelectedImage(image)
     setdetailedCardModalVisible(true)
   }
 
@@ -45,7 +47,7 @@ export default function App() {
           <Card
             key={item.id}
             image={item.image}
-            onCardImagePress={handleCardImagePress}
+            onCardImagePress={() => handleCardImagePress(item.image)}
           />
         ))
       case 2:
@@ -53,7 +55,7 @@ export default function App() {
           <Card
             key={item.id}
             image={item.image}
-            onCardImagePress={handleCardImagePress}
+            onCardImagePress={() => handleCardImagePress(item.image)}
           />
         ))
       default:
@@ -101,6 +103,7 @@ export default function App() {
       <DetailedCardModal
         visible={detailedCardModalVisible}
         onClose={handleCloseModal}
+        image={selectedImage}
       />
     </View>
   )

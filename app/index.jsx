@@ -38,7 +38,7 @@ export default function App() {
     return (
       <TouchableOpacity
         style={styles.item}
-        onPress={handleItemPress}
+        onPress={() => handleItemPress(index)}
         key={index}>
         <ProfileSelect
           text={elemento.text}
