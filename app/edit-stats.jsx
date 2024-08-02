@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ImageBackground, StyleSheet, View, Text } from 'react-native'
-import StatDetail from '../src/components/edit-stats/StatDetail.jsx'
+import { StatDetail, TotalAmount } from '../src/components/edit-stats'
 import { StatusBar } from 'expo-status-bar'
 import tabern from '../assets/images/tabern.png'
+import { NextGoalLabel, NextGoalModal } from '../src/components/dashboard'
 
 import { PROFILES } from '../src/commons/constants/helper.js'
 import {
@@ -17,6 +18,20 @@ export default function App() {
 
   const profile = { ...PROFILES?.[profile_id] }
   const { stats } = { ...profile }
+
+  const totalAmount = stats.reduce((accumulator, stat) => {
+    return accumulator + stat.amount
+  }, 0)
+
+  const [nextGoalModalVisible, setNextGoalModalVisible] = useState(false)
+
+  const handleNextGoalPress = () => {
+    setNextGoalModalVisible(true)
+  }
+
+  const handleCloseGoalModal = () => {
+    setNextGoalModalVisible(false)
+  }
 
   return (
     <View style={styles.container}>
@@ -39,6 +54,19 @@ export default function App() {
               stat={stat.name}
               amount={stat.amount}></StatDetail>
           ))}
+
+          <View style={styles.amountsWrapper}>
+            <TotalAmount value={totalAmount}></TotalAmount>
+            <NextGoalLabel
+              goal={profile.goal}
+              onPressNextGoalLabel={handleNextGoalPress}
+              lightTheme={true}></NextGoalLabel>
+            <NextGoalModal
+              currentGoal={profile.goal}
+              visible={nextGoalModalVisible}
+              // levelImage={level}
+              onClose={handleCloseGoalModal}></NextGoalModal>
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -65,5 +93,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: COLOR_DARK_BORDER,
     borderRadius: 40
+  },
+  amountsWrapper: {
+    height: '20%'
   }
 })

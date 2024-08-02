@@ -34,7 +34,7 @@ export const PROFILES = [
     title: 'Apprentice',
     color: '#89d3d7',
     stats: [
-      { name: 'USD', amount: 140000, image: lifeIcon },
+      { name: 'USD', amount: 140009, image: lifeIcon },
       { name: 'ARS', amount: 200000, image: manaIcon },
       { name: 'Com...', amount: 0, image: armorIcon },
       { name: 'Stocks', amount: 50000, image: fireIcon },
@@ -83,12 +83,12 @@ export const PROFILES = [
     title: 'King of Ashes',
     color: '#9F4CD4',
     stats: [
-      { name: 'USD', amount: 140000, image: lifeIcon },
-      { name: 'ARS', amount: 200000, image: manaIcon },
+      { name: 'USD', amount: 1400000, image: lifeIcon },
+      { name: 'ARS', amount: 2000, image: manaIcon },
       { name: 'Com...', amount: 0, image: armorIcon },
       { name: 'Stocks', amount: 50000, image: fireIcon },
-      { name: 'Cripto', amount: 0, image: divineIcon },
-      { name: 'Other', amount: 500000, image: darkIcon }
+      { name: 'Cripto', amount: 2000, image: divineIcon },
+      { name: 'Other', amount: 5000000, image: darkIcon }
     ],
     crew: [
       {
@@ -122,7 +122,7 @@ export const PROFILES = [
         image: item1
       }
     ],
-    goal: 900000
+    goal: 9000000
   }
 ]
 

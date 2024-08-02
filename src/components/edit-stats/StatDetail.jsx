@@ -28,7 +28,9 @@ export default function StatDetail(props) {
         <Text style={styles.stat}>{props.stat}</Text>
       </View>
       <TouchableOpacity style={{ flex: 1, zIndex: 1 }}>
-        <View style={styles.inputContainer}></View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.amount}>${props.amount}</Text>
+        </View>
 
         <Image source={edit} style={styles.editButton}></Image>
       </TouchableOpacity>
@@ -74,15 +76,24 @@ const styles = StyleSheet.create({
     margin: 10,
     borderWidth: 1.5,
     borderColor: COLOR_LIGHT_BORDER,
-    backgroundColor: COLOR_BLACK_GOAL_BACKGORUND
+    backgroundColor: COLOR_BLACK_GOAL_BACKGORUND,
+    justifyContent: 'center',
+    alignItems: 'flex-end'
   },
   editButton: {
-    width: '12%',
-    height: '40%',
+    width: '10%',
+    height: '31%',
     position: 'absolute',
     alignSelf: 'flex-end',
-    right: '1%', // Ajusta la distancia desde el borde derecho
-    bottom: '3%', // Ajusta la distancia desde el borde inferior,
+    right: '3%', // Ajusta la distancia desde el borde derecho
+    bottom: '13%', // Ajusta la distancia desde el borde inferior,
     zIndex: 3
+  },
+  amount: {
+    color: COLOR_WHITE,
+    fontFamily: 'InknutAntiqua_300Light',
+
+    marginRight: '7%',
+    fontSize: 16
   }
 })
