@@ -1,12 +1,21 @@
 /* eslint-disable react/prop-types */
-import { View, Text, Modal, StyleSheet, TextInput, Button } from 'react-native'
+import {
+  View,
+  Text,
+  Modal,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity
+} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import {
-  COLOR_BLACK_GOAL_BACKGORUND,
+  COLOR_DARK_GRAY_80,
   COLOR_GRAY_NEW_PROFILE_TEXT,
-  COLOR_WHITE
+  COLOR_WHITE,
+  COLOR_RED_BORDER
 } from '../../commons/constants/colors'
 import { Currency } from '../../components'
+import StartBtn from '../../components/StartBtn'
 
 const NextGoalModal = ({
   visible,
@@ -45,9 +54,9 @@ const NextGoalModal = ({
           <Text style={[styles.label, { color: COLOR_WHITE }]}>
             Ingrese la nueva meta
           </Text>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: 'row', borderRadius: 10 }}>
             <TextInput
-              placeholder='Ingrese la nueva meta'
+              placeholder='Be optimistic!'
               value={value}
               autoFocus
               onChangeText={handleChangeText}
@@ -63,7 +72,11 @@ const NextGoalModal = ({
             ]}>
             Si desea cambiar la moneda hagalo desde la configuracion
           </Text>
-          <Button title='Ok' onPress={handleAgreeButtonPress} />
+          <TouchableOpacity
+            onPress={handleAgreeButtonPress}
+            style={{ height: 'auto' }}>
+            <StartBtn text='Ok'></StartBtn>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
@@ -78,12 +91,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   modal: {
-    backgroundColor: COLOR_BLACK_GOAL_BACKGORUND,
+    backgroundColor: COLOR_DARK_GRAY_80,
     marginHorizontal: 20,
     borderRadius: 25,
     paddingVertical: 15,
     paddingHorizontal: 15,
-    gap: 10
+    gap: 10,
+    borderWidth: 1.5,
+    borderColor: COLOR_RED_BORDER
   },
   label: {
     fontFamily: 'InknutAntiqua_600SemiBold',
@@ -96,6 +111,8 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: COLOR_WHITE,
     padding: 12,
-    flex: 1
+    flex: 1,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10
   }
 })

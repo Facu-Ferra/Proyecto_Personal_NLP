@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center', // Centrar horizontalmente el botón
     borderRadius: 40,
-    height: 60,
     justifyContent: 'center',
-    marginBottom: 75,
-    width: 320
+    width: '95%',
+    aspectRatio: 7 / 1.25,
+    marginLeft: '4%'
   },
   buttonText: {
     color: COLOR_WHITE,

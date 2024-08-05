@@ -11,7 +11,9 @@ const Currency = ({ text, icon }) => {
         style={{
           backgroundColor: COLOR_PALADIN,
           padding: 8,
-          justifyContent: 'center'
+          justifyContent: 'center',
+          borderTopRightRadius: 10,
+          borderBottomRightRadius: 10
         }}>
         <Text>{text}</Text>
       </View>

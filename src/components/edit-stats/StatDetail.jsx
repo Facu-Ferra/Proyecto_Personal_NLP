@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     height: '31%',
     position: 'absolute',
     alignSelf: 'flex-end',
-    right: '3%', // Ajusta la distancia desde el borde derecho
+    right: '1%', // Ajusta la distancia desde el borde derecho
     bottom: '13%', // Ajusta la distancia desde el borde inferior,
     zIndex: 3
   },
