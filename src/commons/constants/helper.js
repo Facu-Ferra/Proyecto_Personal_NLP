@@ -34,12 +34,12 @@ export const PROFILES = [
     title: 'Apprentice',
     color: '#89d3d7',
     stats: [
-      { name: 'USD', amount: 140009, image: lifeIcon },
+      { name: 'USD', amount: 140000, image: lifeIcon },
       { name: 'ARS', amount: 200000, image: manaIcon },
       { name: 'Com...', amount: 0, image: armorIcon },
       { name: 'Stocks', amount: 50000, image: fireIcon },
       { name: 'Cripto', amount: 0, image: divineIcon },
-      { name: 'Other', amount: 500000, image: darkIcon }
+      { name: 'Other', amount: 50000, image: darkIcon }
     ],
     crew: [
       {
@@ -73,7 +73,7 @@ export const PROFILES = [
         image: item1
       }
     ],
-    goal: 200000
+    goal: 450000
   },
   {
     text: 'Chaldu',

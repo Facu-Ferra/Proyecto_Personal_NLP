@@ -10,6 +10,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 const { width, height } = Dimensions.get('window')
+import React, { useState } from 'react'
 import {
   COLOR_WHITE,
   COLOR_BROWN_DASHBOARD,
@@ -18,25 +19,51 @@ import {
   COLOR_BLACK_GOAL_BACKGORUND
 } from '../../commons/constants/colors'
 import edit from '../../../assets/images/UI/edit.png'
+import { SetStatModal } from '.'
 
-export default function StatDetail(props) {
+const StatDetail = ({ image, stat, amount, onNewValue }) => {
+  const [setStatModalVisible, setSetStatModalVisible] = useState(false)
+
+  const handleStatPress = () => {
+    setSetStatModalVisible(true)
+  }
+
+  const handleCloseStatModal = () => {
+    setSetStatModalVisible(false)
+  }
+
+  const handleNewValue = (value) => {
+    console.log('\n stat: ' + stat + '\n valor a setear: ' + value)
+    onNewValue?.(value)
+  }
+
   return (
     <View style={styles.container}>
-      <Image source={props.image} style={styles.image}></Image>
+      <Image source={image} style={styles.image}></Image>
 
       <View style={styles.textContainer}>
-        <Text style={styles.stat}>{props.stat}</Text>
+        <Text style={styles.stat}>{stat}</Text>
       </View>
-      <TouchableOpacity style={{ flex: 1, zIndex: 1 }}>
+      <TouchableOpacity
+        style={{ flex: 1, zIndex: 1 }}
+        onPress={handleStatPress}>
         <View style={styles.inputContainer}>
-          <Text style={styles.amount}>${props.amount}</Text>
+          <Text style={styles.amount}>${amount}</Text>
         </View>
 
         <Image source={edit} style={styles.editButton}></Image>
       </TouchableOpacity>
+      <SetStatModal
+        visible={setStatModalVisible}
+        onAgreeButtonPress={handleNewValue}
+        currentAmount={amount}
+        // levelImage={level}
+        onClose={handleCloseStatModal}></SetStatModal>
     </View>
   )
 }
+
+export default StatDetail
 
 const styles = StyleSheet.create({
   container: {

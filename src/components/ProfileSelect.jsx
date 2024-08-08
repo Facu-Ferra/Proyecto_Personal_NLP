@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
   profile: {
     width: '80%',
     maxWidth: 400,
-    height: 100,
-    marginBottom: 20,
+    aspectRatio: 3.2 / 1,
+    marginBottom: '4%',
     borderRadius: 40,
     backgroundColor: COLOR_PROFILE_BACKGROUND,
     flexDirection: 'row',
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
   },
   profilePhoto: {
     borderRadius: 100,
-    height: 80,
-    width: 80,
+    height: '80%',
+    width: '26%',
     marginLeft: 7,
     resizeMode: 'cover',
     overflow: 'hidden'
@@ -82,15 +82,15 @@ const styles = StyleSheet.create({
     marginLeft: 18
   },
   newProfileImage: {
-    height: 50,
-    width: 50,
+    height: '80%',
+    aspectRatio: 1 / 1,
     opacity: 0.6
   },
   newProfile: {
     backgroundColor: COLOR_GRAY_NEW_PROFILE,
     borderRadius: 100,
-    height: 80,
-    width: 80,
+    height: '80%',
+    width: '26%',
     marginLeft: 7,
     resizeMode: 'cover',
     justifyContent: 'center',
