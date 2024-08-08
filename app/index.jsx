@@ -101,7 +101,11 @@ const styles = StyleSheet.create({
     width: '85%'
   },
   footer: {
-    flex: 0.3
+    flex: 0.3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    width: '80%'
   },
   item: {
     flex: 1
