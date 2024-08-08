@@ -62,7 +62,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style='light' />
-      <ImageBackground source={tabern} style={styles.backImage}>
+      <ImageBackground source={tabern} style={styles.backImage} blurRadius={1}>
         <View style={styles.profilesContainer}>
           <Image source={title} style={styles.title} />
           <ScrollView>

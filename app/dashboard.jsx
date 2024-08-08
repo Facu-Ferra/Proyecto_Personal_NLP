@@ -61,7 +61,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style='light' />
-      <ImageBackground source={tabern} style={styles.backImage}>
+      <ImageBackground source={tabern} style={styles.backImage} blurRadius={1}>
         <View style={styles.content}>
           <View style={styles.character}>
             <View style={styles.character_text}>

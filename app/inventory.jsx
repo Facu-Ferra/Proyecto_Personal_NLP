@@ -66,7 +66,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style='light'></StatusBar>
-      <ImageBackground source={tabern} style={styles.backImage}>
+      <ImageBackground source={tabern} style={styles.backImage} blurRadius={1}>
         <View style={styles.optionsWrapper}></View>
         <View style={styles.contentWrapper}>
           <View style={styles.switchTab}>
