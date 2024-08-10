@@ -35,9 +35,24 @@ const NextGoalLabel = ({
     <TouchableOpacity
       onPress={handlePress}
       style={[styles.goal_container, lightTheme === true && styles.lightGoal]}>
-      <Text style={styles.goal_title}>Next Goal:</Text>
+      <Text
+        style={[
+          styles.goal_title,
+          lightTheme === true && {
+            position: 'relative',
+            marginLeft: '7%',
+            paddingTop: '2%'
+          }
+        ]}>
+        Next Goal:
+      </Text>
       {renderAmounts(lightTheme)}
-      <Image source={edit} style={styles.editButton}></Image>
+      <Image
+        source={edit}
+        style={[
+          styles.editButton,
+          lightTheme === true && { width: '6.5%' }
+        ]}></Image>
     </TouchableOpacity>
   )
 }
@@ -48,15 +63,17 @@ const styles = StyleSheet.create({
   goal_container: {
     alignSelf: 'center',
     width: '90%',
-    marginTop: '10%',
-    height: '10%',
+    marginTop: '8%',
+    height: '12%',
     backgroundColor: COLOR_BLACK_GOAL_BACKGORUND,
     borderRadius: 40,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   lightGoal: {
     backgroundColor: COLOR_GRAY_DASHBOARD,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     flex: 1,
     marginTop: '5%',
     borderWidth: 1,
@@ -66,25 +83,25 @@ const styles = StyleSheet.create({
   goal_title: {
     color: COLOR_RED,
     fontFamily: 'InknutAntiqua_300Light',
-    marginLeft: '7%',
+    marginTop: '-3%',
+    position: 'absolute',
     fontSize: 20
   },
   goal_info: {
     color: COLOR_WHITE,
     fontFamily: 'InknutAntiqua_300Light',
-    marginRight: '3%',
-    marginTop: '2%',
-    fontSize: 15
+    fontSize: 16,
+    bottom: '1%',
+    position: 'absolute'
   },
   goal_info_light: {
     color: COLOR_WHITE,
     fontFamily: 'InknutAntiqua_300Light',
-    alignContent: 'center',
     marginRight: '3%',
     fontSize: 18
   },
   editButton: {
-    width: '6%',
+    width: '7.2%',
     height: '40%',
     position: 'absolute',
     alignSelf: 'flex-end',

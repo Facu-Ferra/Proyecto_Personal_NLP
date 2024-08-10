@@ -5,15 +5,17 @@ import {
   Modal,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import {
-  COLOR_DARK_GRAY_80,
   COLOR_GRAY_NEW_PROFILE_TEXT,
   COLOR_WHITE,
   COLOR_LIGHT_BORDER,
-  COLOR_GREEN_BTN
+  COLOR_GREEN_BTN,
+  COLOR_DARK_GRAY_60,
+  COLOR_DARK_GRAY_70
 } from '../../commons/constants/colors'
 import { Currency } from '../../components'
 
@@ -49,6 +51,10 @@ const SetStatModal = ({
       animationType='fade'
       onRequestClose={handleClose}
       transparent>
+      <StatusBar
+        backgroundColor={COLOR_DARK_GRAY_60}
+        barStyle='light-content'
+      />
       <View style={styles.overlay}>
         <View style={styles.modal}>
           <Text style={[styles.label, { color: COLOR_WHITE }]}>
@@ -90,10 +96,11 @@ export default SetStatModal
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: COLOR_DARK_GRAY_60
   },
   modal: {
-    backgroundColor: COLOR_DARK_GRAY_80,
+    backgroundColor: COLOR_DARK_GRAY_70,
     marginHorizontal: 20,
     borderRadius: 25,
     paddingVertical: 15,

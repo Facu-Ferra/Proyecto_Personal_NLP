@@ -5,14 +5,15 @@ import {
   Modal,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import {
-  COLOR_DARK_GRAY_80,
   COLOR_GRAY_NEW_PROFILE_TEXT,
   COLOR_WHITE,
-  COLOR_RED_BORDER
+  COLOR_RED_BORDER,
+  COLOR_DARK_GRAY_60
 } from '../../commons/constants/colors'
 import { Currency } from '../../components'
 import StartBtn from '../../components/StartBtn'
@@ -50,6 +51,10 @@ const NextGoalModal = ({
       onRequestClose={handleClose}
       transparent>
       <View style={styles.overlay}>
+        <StatusBar
+          backgroundColor={COLOR_DARK_GRAY_60}
+          barStyle='light-content'
+        />
         <View style={styles.modal}>
           <Text style={[styles.label, { color: COLOR_WHITE }]}>
             Ingrese la nueva meta
@@ -88,10 +93,11 @@ export default NextGoalModal
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: COLOR_DARK_GRAY_60
   },
   modal: {
-    backgroundColor: COLOR_DARK_GRAY_80,
+    backgroundColor: COLOR_DARK_GRAY_60,
     marginHorizontal: 20,
     borderRadius: 25,
     paddingVertical: 15,
