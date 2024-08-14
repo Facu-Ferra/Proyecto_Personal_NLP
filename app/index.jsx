@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { router } from 'expo-router'
-import tabern from '../assets/images/tabern.png'
+import tabern from '../assets/images/backgrounds/tabern.png'
 import title from '../assets/images/title.png'
 import { PROFILES } from '../src/commons/constants/helper.js'
 import {

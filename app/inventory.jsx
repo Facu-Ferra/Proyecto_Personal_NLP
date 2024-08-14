@@ -8,7 +8,7 @@ import {
   Text
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
-import tabern from '../assets/images/tabern.png'
+import tabern from '../assets/images/backgrounds/tabern.png'
 import { Card, DetailedCardModal } from '../src/components/Inventory'
 
 import { PROFILES } from '../src/commons/constants/helper.js'

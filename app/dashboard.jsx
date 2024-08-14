@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ImageBackground, StyleSheet, Text, Image, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { useLocalSearchParams } from 'expo-router'
-import tabern from '../assets/images/tabern.png'
+import tabern from '../assets/images/backgrounds/tabern.png'
 import { PROFILES } from '../src/commons/constants/helper.js'
 import {
   COLOR_GRAY_DASHBOARD,

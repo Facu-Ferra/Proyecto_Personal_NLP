@@ -19,7 +19,9 @@ export default function NavBar(props) {
           <Image source={go_to_crew} style={styles.button}></Image>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {}} style={styles.touchable}>
+        <TouchableOpacity
+          onPress={() => router.push('/chapters?profile_id=' + props.profile)}
+          style={styles.touchable}>
           <Text style={styles.label}>History</Text>
           <Image source={go_to_history} style={styles.button}></Image>
         </TouchableOpacity>

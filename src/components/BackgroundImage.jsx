@@ -2,7 +2,7 @@
 import React from 'react'
 import { ImageBackground, StyleSheet } from 'react-native'
 
-import tabern from '../../assets/images/tabern.png'
+import tabern from '../../assets/images/backgrounds/tabern.png'
 
 const BackgroundImage = ({ children }) => {
   return (

@@ -8,7 +8,7 @@ import {
   NewLevelModal
 } from '../src/components/edit-stats'
 import { StatusBar } from 'expo-status-bar'
-import tabern from '../assets/images/tabern.png'
+import tabern from '../assets/images/backgrounds/tabern.png'
 import { NextGoalLabel, NextGoalModal } from '../src/components/dashboard'
 
 import { PROFILES } from '../src/commons/constants/helper.js'
