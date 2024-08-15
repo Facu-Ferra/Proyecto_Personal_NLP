@@ -19,6 +19,7 @@ import level1 from '../../../assets/images/level-icon/1.png'
 import level10 from '../../../assets/images/level-icon/10.png'
 
 import item1 from '../../../assets/images/items/sword.png'
+import item2 from '../../../assets/images/items/rageRing.png'
 
 /* 
     Aca van todos los datos harodeados hasta que se 
@@ -71,6 +72,10 @@ export const PROFILES = [
       {
         id: 1,
         image: item1
+      },
+      {
+        id: 2,
+        image: item2
       }
     ],
     goal: 450000
