@@ -87,16 +87,16 @@ export default function App() {
             style={{ width: '13%', aspectRatio: 1 / 1.5 }}></Image>
           <Text style={styles.text}>{sumRare(PROFILES[profile_id].crew)} </Text>
           <Image
-            source={items}
-            style={{ width: '20%', aspectRatio: 1 / 1 }}></Image>
-          <Text style={styles.text}>
-            {countItems(PROFILES[profile_id].items)}{' '}
-          </Text>
-          <Image
             source={crew}
             style={{ width: '19%', aspectRatio: 1 / 1.2 }}></Image>
           <Text style={styles.text}>
             {countItems(PROFILES[profile_id].crew)}{' '}
+          </Text>
+          <Image
+            source={items}
+            style={{ width: '20%', aspectRatio: 1 / 1 }}></Image>
+          <Text style={styles.text}>
+            {countItems(PROFILES[profile_id].items)}{' '}
           </Text>
         </View>
         <View style={styles.contentWrapper}>
