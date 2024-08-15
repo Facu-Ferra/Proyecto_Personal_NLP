@@ -45,37 +45,45 @@ export const PROFILES = [
     crew: [
       {
         id: 1,
-        image: character4
+        image: character4,
+        rare: 3
       },
       {
         id: 2,
-        image: character7
+        image: character7,
+        rare: 5
       },
       {
         id: 3,
-        image: character6
+        image: character6,
+        rare: 2
       },
       {
         id: 4,
-        image: character5
+        image: character5,
+        rare: 4
       },
       {
         id: 5,
-        image: character3
+        image: character3,
+        rare: 4
       },
       {
         id: 6,
-        image: character8
+        image: character8,
+        rare: 1
       }
     ],
     items: [
       {
         id: 1,
-        image: item1
+        image: item1,
+        rare: 1
       },
       {
         id: 2,
-        image: item2
+        image: item2,
+        rare: 3
       }
     ],
     goal: 450000
@@ -98,33 +106,40 @@ export const PROFILES = [
     crew: [
       {
         id: 1,
-        image: character3
+        image: character3,
+        rare: 1
       },
       {
         id: 2,
-        image: character6
+        image: character6,
+        rare: 5
       },
       {
         id: 3,
-        image: character5
+        image: character5,
+        rare: 3
       },
       {
         id: 4,
-        image: character4
+        image: character4,
+        rare: 4
       },
       {
         id: 5,
-        image: character9
+        image: character9,
+        rare: 3
       },
       {
         id: 6,
-        image: character8
+        image: character8,
+        rare: 2
       }
     ],
     items: [
       {
         id: 1,
-        image: item1
+        image: item1,
+        rare: 1
       }
     ],
     goal: 9000000

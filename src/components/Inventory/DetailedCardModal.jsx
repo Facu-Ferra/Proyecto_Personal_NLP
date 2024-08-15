@@ -20,7 +20,7 @@ import {
   COLOR_LIGHT_BORDER
 } from '../../commons/constants/colors'
 
-const DetailedCardModal = ({ visible, onClose, image }) => {
+const DetailedCardModal = ({ visible, onClose, image, rare }) => {
   const handleClose = () => {
     onClose?.()
   }
@@ -52,7 +52,7 @@ const DetailedCardModal = ({ visible, onClose, image }) => {
             Reinhard
           </Text>
           <Image source={image} style={styles.image} />
-          <Calification rarity={3}></Calification>
+          <Calification rarity={rare}></Calification>
           <ScrollView
             style={{ width: '100%', height: '100%', marginTop: 15 }}
             showsVerticalScrollIndicator={true}
