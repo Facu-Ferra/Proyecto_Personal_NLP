@@ -20,6 +20,7 @@ import level10 from '../../../assets/images/level-icon/10.png'
 
 import item1 from '../../../assets/images/items/sword.png'
 import item2 from '../../../assets/images/items/rageRing.png'
+import item3 from '../../../assets/images/items/grail.png'
 
 /* 
     Aca van todos los datos harodeados hasta que se 
@@ -84,6 +85,11 @@ export const PROFILES = [
         id: 2,
         image: item2,
         rare: 3
+      },
+      {
+        id: 3,
+        image: item3,
+        rare: 5
       }
     ],
     goal: 450000

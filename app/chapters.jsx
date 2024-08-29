@@ -38,16 +38,16 @@ export default function App() {
             style={{ flex: 1, width: '100%', marginTop: '10%' }}
             contentContainerStyle={{ alignItems: 'center' }}>
             <View style={styles.chaptersWrapper}>
-              <Chapter title='1 - Introduccion'></Chapter>
-              <Chapter title='2 - Awaken'></Chapter>
-              <Chapter title='3 - Warriors'></Chapter>
-              <Chapter title='4 - KDA'></Chapter>
-              <Chapter title='3 - Return' lock={true}></Chapter>
-              <Chapter title='3 - Return' lock={true}></Chapter>
-              <Chapter title='3 - Return' lock={true}></Chapter>
-              <Chapter title='3 - Return' lock={true}></Chapter>
-              <Chapter title='3 - Return' lock={true}></Chapter>
-              <Chapter title='3 - Return' lock={true}></Chapter>
+              <Chapter title='1 - Introduccion' id={1} lock={false}></Chapter>
+              <Chapter title='2 - Awaken' id={2} lock={false}></Chapter>
+              <Chapter title='3 - Warriors' id={3} lock={false}></Chapter>
+              <Chapter title='4 - KDA' id={4} lock={false}></Chapter>
+              <Chapter title='3 - Return' id={5} lock={true}></Chapter>
+              <Chapter title='3 - Return' id={6} lock={true}></Chapter>
+              <Chapter title='3 - Return' id={7} lock={true}></Chapter>
+              <Chapter title='3 - Return' id={8} lock={true}></Chapter>
+              <Chapter title='3 - Return' id={9} lock={true}></Chapter>
+              <Chapter title='3 - Return' id={10} lock={true}></Chapter>
             </View>
           </ScrollView>
         </View>

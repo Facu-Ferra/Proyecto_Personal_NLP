@@ -17,12 +17,14 @@ import {
   COLOR_DARK_GRAY_50,
   COLOR_WHITE_45
 } from '../../commons/constants/colors'
+import { router } from 'expo-router'
 
-const Chapter = ({ title, lock }) => {
+const Chapter = ({ title, lock, id }) => {
   if (lock) title = '   - Locked'
   return (
     <TouchableOpacity
-      style={{ height: Math.min(width, height) * 0.17, marginVertical: '2%' }}>
+      style={{ height: Math.min(width, height) * 0.17, marginVertical: '2%' }}
+      onPress={() => goToRoute(lock, id)}>
       <View
         style={[
           styles.container,
@@ -37,6 +39,12 @@ const Chapter = ({ title, lock }) => {
       </View>
     </TouchableOpacity>
   )
+}
+
+const goToRoute = (lock, id) => {
+  if (!lock) {
+    router.push('/story?chapter_id=' + id)
+  }
 }
 
 export default Chapter
